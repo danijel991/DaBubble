@@ -1,27 +1,23 @@
 <div class="header-container">
     <div *ngIf="!(this.chatBehaviorService.headerMoblieView)">
         <div class="header-inline">
-            <div class="header-logo-container" >
+            <div class="header-logo-container" (click)="rootPage()">
                 <img src="./assets/img/Logo-small.png" alt="Logo">
                 <h2>DABubble</h2>
             </div>
-            <!--<div class="search-bar-parent">
-                <input type="text" placeholder="Search in code learning" id="searchUser">
-                <img src="./assets/img/icons/search.png" alt="Search">
-            </div>-->
         </div>
     </div>
-    
+
     <div *ngIf="this.chatBehaviorService.headerMoblieView">
         <div class="channel-header-mobile">
             <mat-icon (click)="backToChannelMobile()">arrow_back_ios</mat-icon>
             <div class="channel-info" *ngIf="(receivedChannelData$ | async) as channel">
                 <div class="shape"><img src="./assets/img/icons/channel-sample-icon.png" alt="#"></div>
                 <h2>{{ channel.channelName }}</h2>
-            </div>   
+            </div>
         </div>
     </div>
-   
+
     <div (click)="openLogoutContainer()" class="profile">
         <h2>{{ this.userDataService.userName }}</h2>
         <img class="user-icon" src="{{ this.userDataService.userPicture }}" alt="">

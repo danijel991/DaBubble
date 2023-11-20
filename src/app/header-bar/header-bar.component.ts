@@ -5,7 +5,7 @@ import { ValidationService } from '../service-moduls/validation.service';
 import { Firestore, collection, doc, updateDoc } from '@angular/fire/firestore';
 import { UserDataInterface, UserDataService } from '../service-moduls/user.service';
 import { ChatBehaviorService } from '../service-moduls/chat-behavior.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChannelDataInterface } from '../service-moduls/channel.service';
 import { Observable, map } from 'rxjs';
 import { ChannelDataResolverService } from '../service-moduls/channel-data-resolver.service';
@@ -62,6 +62,7 @@ export class HeaderBarComponent {
     public chatBehaviorService: ChatBehaviorService,
     private firestore: Firestore,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
 /**
@@ -321,4 +322,8 @@ export class HeaderBarComponent {
     }, 3000);
   }
 
+  rootPage() {
+    const userId = this.userDataService.currentUser;
+    this.router.navigateByUrl(`/board/${userId}`);
+  }
 }

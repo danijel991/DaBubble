@@ -41,6 +41,7 @@ section {
 .header-logo-container {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     img {
         width: 55px;
@@ -74,14 +75,14 @@ main {
         align-items: center;
         justify-content: center;
         color: white;
-        padding: 12px 20px; 
-        border-radius: 25px; 
+        padding: 12px 20px;
+        border-radius: 25px;
         cursor: pointer;
         background-color: var(--c-purple);
-        border: none; 
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         transform: scale(1);
-        transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease; 
+        transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
 
         span {
             font-size: 1rem;
@@ -90,8 +91,8 @@ main {
 
         &:hover {
             background-color: rgba(108, 92, 231, 0.9);
-            transform: scale(0.98); 
-          
+            transform: scale(0.98);
+
         }
     }
 }

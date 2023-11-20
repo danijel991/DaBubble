@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../service-moduls/validation.service';
 import { AuthenticationService } from '../service-moduls/authentication.service';
 import { Router } from '@angular/router';
+import { UserDataService } from '../service-moduls/user.service';
 
 @Component({
   selector: 'app-password-reset',
@@ -24,9 +25,11 @@ export class PasswordResetComponent {
 
 
   constructor(
-    private router: Router, 
-    public validation: ValidationService,  
-    public authentication: AuthenticationService) { }
+    private router: Router,
+    public validation: ValidationService,
+    public authentication: AuthenticationService,
+    public userDataService: UserDataService
+  ) { }
 
   /*------ Send-Mail ------*/
 
@@ -85,5 +88,13 @@ export class PasswordResetComponent {
     }, 3500);
   }
 
-  
+  rootPage() {
+    const userId = this.userDataService.currentUser;
+
+    if (userId === '') {
+      this.router.navigateByUrl('/');
+    } else {
+      this.router.navigateByUrl(`/board/${userId}`);
+    }
+  }
 }

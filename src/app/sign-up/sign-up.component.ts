@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../service-moduls/validation.service';
 import { AuthenticationService } from '../service-moduls/authentication.service';
 import { Router } from '@angular/router';
+import { UserDataService } from '../service-moduls/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -41,9 +42,11 @@ export class SignUpComponent {
   }, { validators: this.validation.matchPassword.bind(this) });
 
   constructor(
-    private router: Router, 
-    public validation: ValidationService, 
-    public authentication: AuthenticationService) { }
+    private router: Router,
+    public validation: ValidationService,
+    public authentication: AuthenticationService,
+    public userDataService: UserDataService
+  ) { }
 
   /*------ SIGN-UP ------*/
 
@@ -57,7 +60,6 @@ export class SignUpComponent {
       return;
     }
     this.disableForm();
-
     this.checkSignUp();
   }
 
@@ -98,7 +100,7 @@ export class SignUpComponent {
     const password: string = this.signUpForm.value.password ?? '';
     const picturePath = this.randomPicture();
     const authUID = await this.authentication.sendUserToAuthenticator(emailLowerCase, password);
-    await this.authentication.sendUserToFirebase(name,emailLowerCase, authUID, picturePath);
+    await this.authentication.sendUserToFirebase(name, emailLowerCase, authUID, picturePath);
 
     this.showsNotificationAnimation();
     this.resetForm();
@@ -110,7 +112,7 @@ export class SignUpComponent {
    * @returns {string} A randomly chosen picture path.
    */
   randomPicture() {
-    const numberOfPictures = 5; 
+    const numberOfPictures = 5;
     const randomIndex = Math.floor(Math.random() * numberOfPictures) + 1;
     const randomPicture = `./assets/profile-pictures/avatar${randomIndex}.png`;
     return randomPicture;
@@ -144,5 +146,13 @@ export class SignUpComponent {
     }, 3500);
   }
 
+  rootPage() {
+    const userId = this.userDataService.currentUser;
 
+    if (userId === '') {
+      this.router.navigateByUrl('/');
+    } else {
+      this.router.navigateByUrl(`/board/${userId}`);
+    }
+  }
 }

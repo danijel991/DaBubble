@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../service-moduls/authentication.service';
 import { Router } from '@angular/router';
+import { UserDataService } from '../service-moduls/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,7 +21,10 @@ export class SignInComponent {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private router: Router, public authentication: AuthenticationService) { }
+  constructor(private router: Router,
+    public authentication: AuthenticationService,
+    public userDataService: UserDataService
+  ) { }
 
   /*------ SIGN-IN ------*/
 
@@ -111,5 +115,13 @@ export class SignInComponent {
     }, 3500);
   }
 
+  rootPage() {
+    const userId = this.userDataService.currentUser;
 
+    if (userId === '') {
+      this.router.navigateByUrl('/');
+    } else {
+      this.router.navigateByUrl(`/board/${userId}`);
+    }
+  }
 }

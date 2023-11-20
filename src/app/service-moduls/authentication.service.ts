@@ -45,18 +45,6 @@ export class AuthenticationService {
       });
   }
 
-  /*
-  async loginWithGoogle() {
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
-    this.user = null;
-    this.errorMessage = '';
-
-    signInWithRedirect(auth, provider);
-    const userCred = await getRedirectResult(auth);
-    console.log(userCred);
-  }*/
-
   async loginWithGoogle() {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
@@ -108,7 +96,7 @@ export class AuthenticationService {
    * @param {object} user - User Data
    */
   async sendVerificationMail(user: any) {
-    console.log(typeof(user));
+    console.log(typeof (user));
     await sendEmailVerification(user)
       .then(() => {
         // Email verification sent!
@@ -140,7 +128,6 @@ export class AuthenticationService {
 
     await confirmPasswordReset(auth, code, newPassword)
       .then(() => {
-        // Password has been reset!
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -183,7 +170,6 @@ export class AuthenticationService {
 
     await applyActionCode(auth, actionCode)
       .then((resp) => {
-        // Email address has been verified.
       }).catch((error) => {
         console.log('ERROR verify EMail: ', error);
       });
@@ -203,7 +189,6 @@ export class AuthenticationService {
   }
 
   async setUserInactive() {
-    //const currentUserUID = localStorage.getItem('currentUser');
 
     if (this.userDataService.currentUser) {
       const userRef = doc(this.firestore, 'users', this.userDataService.currentUser);
@@ -211,7 +196,6 @@ export class AuthenticationService {
         console.log('ERROR setUserInactive:', error);
       });
 
-      // localStorage.setItem('currentUser', ''); // TEST
     }
   }
 
@@ -221,9 +205,7 @@ export class AuthenticationService {
       if (user) {
         //localStorage.setItem('currentUser', this.user.uid); // TEST
         await setDoc(doc(collection(this.firestore, 'users'), this.user.uid), { status: 'Active' }, { merge: true }).then(() => {
-          this.router.navigateByUrl('/board/' + this.user.uid).then(() => {
-
-          });
+          this.router.navigateByUrl('/board/' + this.user.uid).then(() => { });
         });
       }
     });
