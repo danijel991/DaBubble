@@ -84,7 +84,6 @@
   z-index: 2;
 }
 
-
 .reaction-emojis {
   display: flex;
   width: 0;
@@ -140,12 +139,6 @@
   }
 }
 
-.participant-amount {
-  @media (max-width: 880px) {
-    display: none;
-  }
-}
-
 .search-input-channels {
   display: flex;
   flex-direction: column;
@@ -170,7 +163,7 @@
     }
 
     h2 {
-        font-size: 20px;
+      font-size: 20px;
       font-style: normal;
       font-weight: 700;
       margin: 0;
@@ -198,7 +191,7 @@
     align-items: flex-start;
     width: 95%;
     border-radius: 20px;
-    border: 1px solid var(--ligth-purple-lines, #adb0d9);
+    border: 1px solid #adb0d9;
     padding: 20px;
     gap: 20px;
 
@@ -212,13 +205,13 @@
   .search-results {
     margin-top: 25px;
     border-radius: 20px;
-    border: 1px solid var(--ligth-purple-lines, #adb0d9);
+    border: 1px solid #adb0d9;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.08);
     z-index: 10;
 
     .user-list {
       padding: 10px 0;
-        font-size: 16px;
+      font-size: 16px;
       font-style: normal;
       font-weight: 500;
       cursor: pointer;
@@ -230,7 +223,7 @@
 
     .channel-list {
       padding: 10px 0;
-        font-size: 16px;
+      font-size: 16px;
       font-style: normal;
       font-weight: 500;
       cursor: pointer;
@@ -282,6 +275,10 @@
   font-weight: 600;
   line-height: normal;
   margin-right: 20px;
+
+  @media (max-width: 880px) {
+    display: none;
+  }
 }
 
 .add-participant {
@@ -295,7 +292,7 @@
 
 .add-participant-background {
   border-radius: 20px;
-  background: var(--bg-color, #eceefe);
+  background: #eceefe;
   height: 40px;
   width: 40px;
   display: flex;
@@ -406,7 +403,7 @@
   }
 
   &:hover {
-    background: var(--bg-color, #eceefe);
+    background: #adb0d9;
   }
 }
 
@@ -418,7 +415,7 @@
 
 .time-stamp {
   border-radius: 30px;
-  border: 1px solid var(--ligth-purple-lines, #adb0d9);
+  border: 1px solid #adb0d9;
   padding: 0 15px 5px;
   width: fit-content;
   font-size: 18px;
@@ -445,18 +442,23 @@
   padding-bottom: 25px;
   word-break: break-word;
   position: relative;
+
   span {
     max-width: 500px;
-    @media (max-width: 1750px){
-    max-width: 300px;
+
+    @media (max-width: 1750px) {
+      max-width: 300px;
     }
-    @media (max-width: 1180px){
-    max-width: 150px;
+
+    @media (max-width: 1180px) {
+      max-width: 150px;
     }
-    @media (max-width: 850px){
-    max-width: 80px;
+
+    @media (max-width: 850px) {
+      max-width: 80px;
     }
   }
+
   @media (max-width: 420px) {
     padding-top: 15px;
     padding-bottom: 20px;
@@ -635,13 +637,12 @@
   margin: 10px;
 }
 
-
 .reaction-icon-container {
   display: flex;
   padding: 5px 10px;
   align-items: center;
   border-radius: 20px;
-  border: 1px solid var(--ligth-purple-lines, #adb0d9);
+  border: 1px solid #adb0d9;
   height: 24px;
   width: 44px;
   gap: 10px;
@@ -651,7 +652,6 @@
     background-color: #adb0d947;
   }
 }
-
 
 .reaction-counter {
   font-size: 16px;
@@ -691,7 +691,8 @@
 .input-when-emoji-picker-active {
   @media (max-width:420px) {
     bottom: 250px;
-    input{
+
+    input {
       margin-bottom: 20px;
     }
   }
@@ -706,7 +707,7 @@
 
 .text-editor {
   border-radius: 20px;
-  border: 1px solid var(--ligth-purple-lines, #adb0d9);
+  border: 1px solid #adb0d9;
   min-height: 145px;
   padding: 20px;
   margin-top: 6px;
@@ -772,18 +773,16 @@
   padding-left: 5px;
 }
 
-// Define common variables
 $container-size: 24px;
 $outline-size: $container-size + 6px;
 $light-blue: #eceefe;
 
-// Common styles for all containers
 .container {
   height: $container-size;
   width: $container-size;
   cursor: pointer;
-  border-radius: 50%; // Add border-radius to make them circles
-  position: relative; // Add relative positioning for the absolute pseudo-element
+  border-radius: 50%;
+  position: relative;
 
   &:hover {
     background-color: $light-blue;
@@ -794,7 +793,6 @@ $light-blue: #eceefe;
     height: 100%;
   }
 
-  // Pseudo-element for creating the circle outline
   &::before {
     content: "";
     display: block;
@@ -804,8 +802,8 @@ $light-blue: #eceefe;
     right: -6px;
     bottom: -6px;
     border-radius: inherit;
-    box-shadow: 0 0 0 6px transparent; // Increase the spread radius for a more pronounced shadow
-    opacity: 0; // Hide the pseudo-element by default
+    box-shadow: 0 0 0 6px transparent;
+    opacity: 0;
     transition: opacity 0.3s;
   }
 
@@ -865,7 +863,7 @@ $light-blue: #eceefe;
     justify-content: center;
     align-items: center;
     border-radius: 100px;
-    background: var(--purple-1, #444DF2);
+    background: #444DF2;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
     position: absolute;
     right: 0;
@@ -1056,18 +1054,17 @@ section {
       width: 100%;
 
       h2 {
-            margin-top: 20px;
+        margin-top: 20px;
         font-size: 18px;
         font-style: normal;
         font-weight: 700;
       }
 
       span {
-            margin-top: 20px;
+        margin-top: 20px;
         font-size: 18px;
         font-style: normal;
         color: var(--c-mediun-purple);
-        margin: 0;
         cursor: pointer;
       }
     }
@@ -1086,14 +1083,14 @@ section {
       }
 
       h1 {
-            font-size: 20px;
+        font-size: 20px;
         font-style: normal;
         font-weight: 700;
       }
     }
 
     h3 {
-        margin-top: 20px;
+      margin-top: 20px;
       font-size: 18px;
       font-style: normal;
       font-weight: 700;
@@ -1114,8 +1111,7 @@ section {
       align-items: flex-start;
       width: 95%;
       border-radius: 20px;
-      border: 1px solid var(--ligth-purple-lines, #adb0d9);
-      padding: 20px;
+      border: 1px solid #adb0d9;
       gap: 20px;
     }
 
@@ -1157,16 +1153,14 @@ section {
       justify-content: center;
       align-items: flex-start;
       border-radius: 20px;
-      border: 1px solid var(--ligth-purple-lines, #adb0d9);
-      padding: 20px;
+      border: 1px solid #adb0d9;
       gap: 20px;
 
       h2 {
-            margin-top: 20px;
+        margin-top: 20px;
         font-size: 18px;
         font-style: normal;
         font-weight: 700;
-        margin: 0;
       }
 
       .channel-creator {
@@ -1175,11 +1169,10 @@ section {
         row-gap: 10px;
 
         span {
-                margin-top: 20px;
+          margin-top: 20px;
           font-size: 18px;
           font-style: normal;
           color: var(--c-mediun-purple);
-          margin: 0;
           cursor: pointer;
         }
       }
@@ -1187,7 +1180,7 @@ section {
       .under-line {
         width: 100%;
         height: 1px;
-        background-color: var(--purple-1, #adb0d9);
+        background-color: #adb0d9;
       }
     }
   }
@@ -1222,7 +1215,6 @@ section {
   left: 0;
   z-index: 1;
 }
-
 
 .delete-message-left-corner {
   position: absolute;
@@ -1419,8 +1411,8 @@ section {
     padding-bottom: 69px;
   }
 
-  .text-area-when-emoji-picker-active{
-     height: 200px !important;
+  .text-area-when-emoji-picker-active {
+    height: 200px !important;
   }
 
   .mentioned-users-container {
