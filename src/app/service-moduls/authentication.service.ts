@@ -180,8 +180,7 @@ export class AuthenticationService {
 
     const auth = getAuth();
     await signOut(auth).then(async () => {
-      // Sign-out successful.
-      await this.router.navigateByUrl("/sign-in");
+      await this.router.navigateByUrl("/");
       window.location.reload();
     }).catch((error) => {
       console.log('ERROR signOut: ', error);
@@ -203,7 +202,6 @@ export class AuthenticationService {
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        //localStorage.setItem('currentUser', this.user.uid); // TEST
         await setDoc(doc(collection(this.firestore, 'users'), this.user.uid), { status: 'Active' }, { merge: true }).then(() => {
           this.router.navigateByUrl('/board/' + this.user.uid).then(() => { });
         });

@@ -19,7 +19,6 @@ const routes: Routes = [
   { path: 'board/:id', component: BoardComponent },
   { path: 'imprint', component: ImprintComponent },
   { path: 'legal', component: LegalComponent},
-  
 ];
 
 @NgModule({
