@@ -11,7 +11,7 @@ import { UserDataService } from './user.service';
 export class AuthenticationService {
   user: any = null;
   errorMessage: string = '';
-  guestUID: string = 'VkLP7dYflLeKFtjvyqmZbPltJy13';
+  guestUID: string = 'vRNvZGB55HaDEbD5kIreb011QbA2';
 
 
   constructor(
