@@ -13,9 +13,9 @@ export class StartscreenComponent implements OnInit {
   hideIntro = false;
   toLeft = false;
   workmode = false;
-  mobile:boolean = false;
+  mobile: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
 
   ngOnInit(): void {
@@ -35,9 +35,7 @@ export class StartscreenComponent implements OnInit {
     }, 1000);
   }
 
- 
-
-  checkForScreenWidth(){
+  checkForScreenWidth() {
     if (window.innerWidth < 800) {
       this.mobile = true;
     } else {
@@ -49,4 +47,4 @@ export class StartscreenComponent implements OnInit {
     this.checkForScreenWidth();
   }
 
-} 
+}

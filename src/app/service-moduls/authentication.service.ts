@@ -28,7 +28,7 @@ export class AuthenticationService {
 
     await signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential: any) => {
-        // Signed in 
+        // Signed in
         this.user = userCredential.user;
         if (this.user.uid != this.guestUID) { // Guest-Login
           if (this.user.emailVerified !== true) {
